@@ -18,6 +18,21 @@ void print_list_rev(const listint_t *list)
 	}
 	printf("\n");
 }
+void swaper(listint_t **list, listint_t *head_tmp2)
+{
+
+	head_tmp2->next->prev = head_tmp2->prev;
+
+	if (head_tmp2->prev)
+		head_tmp2->prev->next = head_tmp2->next;
+	else
+		*list = head_tmp2->next;
+	head_tmp2->prev = head_tmp2->next;
+	head_tmp2->next = head_tmp2->next->next;
+	head_tmp2->prev->next = head_tmp2;
+	if (head_tmp2->next)
+		head_tmp2->next->prev = head_tmp2;
+}
 /**
  * insertion_sort_list - sorts a doubly linked list of integers
  * in ascending order using the Insertion sort ailgorithm
@@ -26,7 +41,7 @@ void print_list_rev(const listint_t *list)
  **/
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *head_tmp2, *aux2;
+	listint_t *head_tmp2;
 	int flag = 1;
 
 	if (list)
@@ -39,18 +54,7 @@ void cocktail_sort_list(listint_t **list)
 			{
 				if (head_tmp2->n > head_tmp2->next->n)
 				{
-
-					aux2 = head_tmp2->next;
-					if (head_tmp2->prev)
-						head_tmp2->prev->next = aux2;
-					else
-						*list = aux2;
-					if (aux2->next)
-						aux2->next->prev = head_tmp2;
-					head_tmp2->next = aux2->next;
-					aux2->prev = head_tmp2->prev;
-					aux2->next = head_tmp2;
-					head_tmp2->prev = aux2;
+					swaper(list, head_tmp2);
 					flag = 1;
 					print_list(*list);
 				}
@@ -64,18 +68,7 @@ void cocktail_sort_list(listint_t **list)
 			{
 				if (head_tmp2->prev->n > head_tmp2->n)
 				{
-					aux2 = head_tmp2->prev;
-					aux2->next->prev = aux2->prev;
-
-					if (aux2->prev)
-						aux2->prev->next = aux2->next;
-					else
-						*list = aux2->next;
-					aux2->prev = aux2->next;
-					aux2->next = aux2->next->next;
-					aux2->prev->next = aux2;
-					if (aux2->next)
-						aux2->next->prev = aux2;
+					swaper(list, head_tmp2->prev);
 					flag = 1;
 					print_list(*list);
 				}
