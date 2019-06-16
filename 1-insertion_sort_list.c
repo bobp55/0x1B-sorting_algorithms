@@ -1,23 +1,4 @@
 #include "sort.h"
-void print_list_rev(const listint_t *list)
-{
-	int i;
-
-
-	while(list->next)
-		list= list->next;
-
-	i = 0;
-	while (list)
-	{
-		if (i > 0)
-			printf(", ");
-		printf("%d", list->n);
-		++i;
-		list = list->prev;
-	}
-	printf("\n");
-}
 /**
  * insertion_sort_list - sorts a doubly linked list of integers
  * in ascending order using the Insertion sort ailgorithm
@@ -33,34 +14,28 @@ void insertion_sort_list(listint_t **list)
 	{
 		head_tmp1 = *list;
 		head_tmp2 = *list;
-		while(list && head_tmp1->next)
+		while (list && head_tmp1->next)
 		{
 			if (head_tmp1->next)
 			{
 				flag = 0;
 				head_tmp2 = head_tmp1;
-				while(head_tmp2 && head_tmp2->n > head_tmp2->next->n)
+				while (head_tmp2 && head_tmp2->n > head_tmp2->next->n)
 				{
 					aux1 = head_tmp2;
 					aux2 = head_tmp2->next;
 					aux1->next = aux2->next;
 					if (aux2->next)
-					{
 						aux2->next->prev = aux1;
-					}
 					if (aux2)
 					{
 						aux2->prev = aux1->prev;
 						aux2->next = aux1;
 					}
 					if (aux1)
-					{
 						aux1->prev = aux2;
-					}
 					if (aux2->prev)
-					{
 						aux2->prev->next = aux2;
-					}
 					head_tmp2 = aux2->prev;
 					if (!aux2->prev)
 						*list = aux2;

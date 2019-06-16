@@ -1,18 +1,18 @@
 #include "sort.h"
 /**
- * selection_sort - sorts an array of integers in ascending order using
- * the Selection sort algorithm
+ * quick_sort_rec - sorts an array of integers in ascending order using
+ * the Selection sort algorithm using recursion
  * @array: pointer to array
  * @size: size of the array
+ * @array_init: initial pointer to array
+ * @size_init: initial size of the array
  **/
 void quick_sort_rec(int *array_init, size_t size_init, int *array, size_t size)
 {
 	size_t j, aux;
 	int aux2;
-	int i = - 1, n, pivot = array[size - 1];
+	int i = -1, n, pivot = array[size - 1];
 
-	//printf("inicio with size:%lu\n", size);
-	//print_array(array, size);
 	if (array && size > 1)
 	{
 		for (j = 0; j < size - 1; j++)
@@ -39,7 +39,6 @@ void quick_sort_rec(int *array_init, size_t size_init, int *array, size_t size)
 			array[i + 1] = pivot;
 			print_array(array_init, size_init);
 		}
-		//printf("el valor de i antes:%d\n", i);
 		if (i > 0)
 		{
 			quick_sort_rec(array_init, size_init, array, i + 1);
@@ -47,6 +46,12 @@ void quick_sort_rec(int *array_init, size_t size_init, int *array, size_t size)
 		quick_sort_rec(array_init, size_init, array + i + 2,  size - (i + 2));
 	}
 }
+/**
+ * quick_sort - sorts an array of integers in ascending order using
+ * the Selection sort algorithm
+ * @array: pointer to array
+ * @size: size of the array
+**/
 void quick_sort(int *array, size_t size)
 {
 	int *array_init;

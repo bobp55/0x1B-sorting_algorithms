@@ -6,16 +6,20 @@
 **/
 void shell_sort(int *array, size_t size)
 {
-	size_t *inter, i = 0, j = 0;
+	size_t *kunth, k = 0, j = 0;
 	(void)array;
 
-	inter = malloc(sizeof(size_t) * size/2);
-	while (inter[i] < size)
+	kunth = malloc(sizeof(size_t));
+	while (j*3 + 1 < size)
 	{
-		inter[i] = j*3 + 1;
-		j = inter[i];
-		i++;
+		kunth[k] = j*3 + 1;
+		j = kunth[k++];
+		kunth = realloc(kunth, k);
 	}
-	for (i = 0; i < size/2; i++)
-		printf("%lu\n", inter[i]);
+	for (j = 0; j < k; j++)
+		printf("%lu\n", kunth[j]);
+	for (j = 0; j < size; j++)
+	{
+		while(
+
 }
