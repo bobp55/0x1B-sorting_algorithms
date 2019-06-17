@@ -1,7 +1,7 @@
 #include "sort.h"
 /**
  * merge - merges l and r arrays into original array
- * @a: pointer to array
+ * @array: pointer to array
  * @size: size of the array
  * @l: pointer to left array
  * @r: pointer to right array
