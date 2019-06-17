@@ -37,6 +37,7 @@ void merge(int *a, int *l, int *r, size_t size)
  **/
 void merge_sort(int *array, size_t size)
 {
+
 	size_t mid = 0;
 	int *left, *right;
 	size_t i;
