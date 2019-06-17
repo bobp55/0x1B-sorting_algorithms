@@ -6,7 +6,7 @@
  * @l: pointer to left array
  * @r: pointer to right array
  **/
-void merge(int *a, int *l, int *r, size_t size)
+void merge(int *array, int *l, int *r, size_t size)
 {
 	int i = 0, j = 0, k = 0;
 	int size_l, size_r;
@@ -22,18 +22,18 @@ void merge(int *a, int *l, int *r, size_t size)
 	while (i < size_l && j < size_r)
 	{
 		if (l[i] < r[j])
-			a[k++] = l[i++];
+			array[k++] = l[i++];
 		else
-			a[k++] = r[j++];
+			array[k++] = r[j++];
 	}
 
 	while (i < size_l)
-		a[k++] = l[i++];
+		array[k++] = l[i++];
 
 	while (j < size_r)
-		a[k++] = r[j++];
+		array[k++] = r[j++];
 	printf("[Done]: ");
-	print_array(a, size);
+	print_array(array, size);
 }
 /**
  * merge_sort - sorts an array of integers in ascending order using
