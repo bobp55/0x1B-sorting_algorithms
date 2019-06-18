@@ -60,13 +60,10 @@ void heap_sort(int *array, size_t size)
 	}
 	for (i = 0; i < size_init - 1; i++)
 	{
-		if (array[0] != array[size - 1 - i])
-		{
 		n = array[0];
 		array[0] = array[size - 1 - i];
 		array[size - 1 - i] = n;
 		print_array(array, size_init);
-		}
 		check_tree(array, size_init, size - i - 1, 0);
 	}
 
